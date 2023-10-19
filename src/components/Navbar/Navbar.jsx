@@ -20,7 +20,7 @@ const Navbar = () => {
       <SingleLink path={"trending"} linkTitle={"Trending"}></SingleLink>
       <SingleLink path={"upcoming"} linkTitle={"Upcoming"}></SingleLink>
       <SingleLink path={"addProduct"} linkTitle={"Add Product"}></SingleLink>
-      <SingleLink path={"myCart"} linkTitle={"My Cart"}></SingleLink>
+      <SingleLink path={`myCart/${user?.email}`} linkTitle={"My Cart"}></SingleLink>
       <SingleLink path={"addBrand"} linkTitle={"Add Brand"}></SingleLink>
     </>
   );

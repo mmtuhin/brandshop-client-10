@@ -60,12 +60,14 @@ const Login = () => {
             <input
               type="text"
               placeholder="email"
+              name="email"
               className="py-2 px-4 w-full rounded-md "
             />
             <br />
             <input
               type="password"
               placeholder="Password"
+              name="password"
               className="py-2 px-4 w-full rounded-md my-6"
             />
             <br />

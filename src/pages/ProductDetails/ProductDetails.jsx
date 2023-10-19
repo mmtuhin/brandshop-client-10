@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const ProductDetails = () => {
+  const {user} = useContext(AuthContext)
+  const email = user.email
+  console.log(email);
     const productDetails = useLoaderData()
     console.log(productDetails[0]);
     const {
@@ -17,6 +22,18 @@ const ProductDetails = () => {
         productBrand,
       } = productDetails[0];
 
+      const cartItem = {_id,
+        productStatus,
+        productRating,
+        productPrice,
+        productName,
+        productImageUrl,
+        productDescription,
+        productCategory,
+        productBrand,
+        email
+      }
+
       const handleAddToCart = () => {
 
         console.log("Adding to cart");
@@ -26,7 +43,7 @@ const ProductDetails = () => {
           headers:{
             'content-type': 'application/json'
           },
-          body: JSON.stringify(productDetails[0])
+          body: JSON.stringify(cartItem)
         })
         .then(res=> res.json())
         .then(data => {

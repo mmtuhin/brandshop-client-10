@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 const Registration = () => {
 
-const { createUser, updateUser } = useContext(AuthContext);
+const { createUser, updateUser, logOut } = useContext(AuthContext);
   const [err, setErr] = useState();
   const navigate = useNavigate();
 
@@ -33,11 +33,16 @@ const { createUser, updateUser } = useContext(AuthContext);
         updateUser(name, profilePhoto)
           .then(() => {
             toast.success("User created Successfully!");
-            navigate("/");
+            e.target.reset()
+            logOut()
+            .then(()=>{
+               navigate("/login");
+            })
+            
           })
-          .catch((err) => toast.error(err));
+          .catch((err) => toast.error(err.message));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
 
 
