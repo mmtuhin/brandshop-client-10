@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 const AddProduct = () => {
@@ -5,8 +6,8 @@ const AddProduct = () => {
   //console.log(brands[0].brandName);
 
   const handleAddProduct = (e) => {
-    e.preventDefault()
-    const form = e.target
+    e.preventDefault();
+    const form = e.target;
     const productName = form.productName.value;
     const productImageUrl = form.productImageUrl.value;
     const productCategory = form.productCategory.value;
@@ -16,41 +17,39 @@ const AddProduct = () => {
     const productStatus = form.productStatus.value;
     const productDescription = form.productDescription.value;
 
-    const newProduct = {productName, productImageUrl,productCategory,productBrand,productPrice,productRating,productStatus,productDescription}
+    const newProduct = {
+      productName,
+      productImageUrl,
+      productCategory,
+      productBrand,
+      productPrice,
+      productRating,
+      productStatus,
+      productDescription,
+    };
 
     console.log(newProduct);
 
-    fetch('http://localhost:4444/product',{
-          method:'POST',
-          headers:{
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(newProduct)
-        })
-        .then(res=> res.json())
-        .then(data => {
-          console.log(data);
-        })
-
-  }
-
-
+    fetch("http://localhost:4444/product", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          toast.success("Product has been added.");
+        } else {
+          toast.error("Something went wrong.");
+        }
+      });
+  };
 
   return (
     <div>
-      {/* <div>
-        <label>
-          {" "}
-          Select Brand
-          <select name="productBrand">
-            {brands.map((brand) => (
-              <option key={brand._id} value={brand.brandName}>
-                {brand.brandName}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div> */}
       <div className="relative ">
         <div className="bg-gray-600">
           <img
@@ -60,7 +59,7 @@ const AddProduct = () => {
           />
         </div>
 
-        <div className=" rounded-lg absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2  p-4 mt-8 backdrop-blur-lg border-2 border-white dark:border-red-600 w-[80%] md:w-auto">
+        <div className=" rounded-lg absolute top-[40%] left-[50%] transform -translate-x-1/2 -translate-y-1/2  p-4 mt-8 backdrop-blur-lg border-2 border-white dark:border-red-600 w-[80%] md:w-auto">
           <div className="px-1 md:px-10 py-8">
             <h2 className=" text-white text-center text-xl my-4">
               Add product.
@@ -87,23 +86,24 @@ const AddProduct = () => {
                 className="py-2 px-4 w-full rounded-md mb-4"
                 required
               />
-              <div className="mb-4">
-                <label className="">
-                  {" "}
+
+              <select
+                name="productBrand"
+                className="py-2 px-4 w-full rounded-md mb-4"
+              >
+                <option disabled selected>
                   Select Brand
-                  <select name="productBrand">
-                    {brands.map((brand) => (
-                      <option
-                        className="w-full"
-                        key={brand._id}
-                        value={brand.brandName}
-                      >
-                        {brand.brandName}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </div>
+                </option>
+                {brands.map((brand) => (
+                  <option
+                    className="w-full"
+                    key={brand._id}
+                    value={brand.brandName}
+                  >
+                    {brand.brandName}
+                  </option>
+                ))}
+              </select>
 
               <input
                 type="text"
@@ -122,11 +122,22 @@ const AddProduct = () => {
               />
               <br />
 
-              <p>Please select product status:</p>
+              {/* <p>Please select product status:</p>
                 <input type="radio"  name="productStatus" value="Published"/>
                 <label >Published</label><br/>
                 <input type="radio"  name="productStatus" value="Upcoming"/>
-                <label >Upcoming</label>
+                <label >Upcoming</label> */}
+
+              <select
+                name="productStatus"
+                className="py-2 px-4 w-full rounded-md mb-4"
+              >
+                <option disabled selected>
+                  Select Status
+                </option>
+                <option value="Published">Published</option>
+                <option value="Upcoming">Upcoming</option>
+              </select>
 
               <textarea
                 type="text"

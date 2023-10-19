@@ -11,6 +11,7 @@ import PrivateRouter from "./PrivateRouter";
 import AddBrand from "../pages/AddBrand/AddBrand";
 import BrandProducts from "../pages/BrandProducts/BrandProducts";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 
 const router = createBrowserRouter([
     {
@@ -34,11 +35,13 @@ const router = createBrowserRouter([
         },
         {
           path: '/upcoming',
-          element: <Upcoming></Upcoming>
+          element: <Upcoming></Upcoming>,
+          loader: () => fetch('http://localhost:4444/upcoming')
         },
         {
           path: '/trending',
-          element: <Trending></Trending>
+          element: <Trending></Trending>,
+          loader:() => fetch('http://localhost:4444/trending')
         },
         {
           path: '/addProduct',
@@ -51,7 +54,7 @@ const router = createBrowserRouter([
         },
         {
           path:'/addBrand',
-          element: <AddBrand></AddBrand>
+          element: <PrivateRouter><AddBrand></AddBrand></PrivateRouter>,
         },
         {
           path: '/brandProducts/:brandName',
@@ -60,8 +63,13 @@ const router = createBrowserRouter([
         },
         {
           path: '/productDetails/:productId',
-          element: <ProductDetails></ProductDetails>,
+          element: <PrivateRouter><ProductDetails></ProductDetails></PrivateRouter>,
           loader: ({params}) => fetch(`http://localhost:4444/productDetails/${params.productId}`)
+        },
+        {
+          path: '/updateProduct/:productId',
+          element: <PrivateRouter><UpdateProduct></UpdateProduct></PrivateRouter>,
+          loader: ({params}) => fetch(`http://localhost:4444/updateProduct/${params.productId}`)
         }
       ]
       

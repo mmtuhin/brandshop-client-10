@@ -1,15 +1,18 @@
 import { useLoaderData } from "react-router-dom";
-import SingleProductCard from "../../components/SingleProductCard/SingleProductCard";
+
+import SingleCartProduct from "../../components/SingleCartProduct/SingleCartProduct";
+import { useState } from "react";
 
 
 const MyCart = () => {
-    const cartProducts = useLoaderData()
-    console.log(cartProducts);
+    const loadedCartProducts = useLoaderData()
+    const [cartProducts, setCartProducts] = useState(loadedCartProducts)
+    console.log(loadedCartProducts);
     return (
         <div>
             <h1>My cart Page</h1>
             {
-                cartProducts.map(cartProduct => <SingleProductCard product={cartProduct}></SingleProductCard>)
+                cartProducts.map(cartProduct => <SingleCartProduct key={cartProduct._id} cartProduct={cartProduct} cartProducts={cartProducts} setCartProducts={setCartProducts}></SingleCartProduct>)
             }
         </div>
     );
