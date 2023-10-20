@@ -1,11 +1,22 @@
 import { MdMovieFilter } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import SingleLink from "../SingleLink/SingleLink";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  //for dark mode toggle
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+  // initially set the theme and "listen" for changes to apply them to the HTML tag
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+  }, [theme]);
+
+  //Dark mode code ends
 
   const handleSignOut = () => {
     logOut()
@@ -20,7 +31,10 @@ const Navbar = () => {
       <SingleLink path={"trending"} linkTitle={"Trending"}></SingleLink>
       <SingleLink path={"upcoming"} linkTitle={"Upcoming"}></SingleLink>
       <SingleLink path={"addProduct"} linkTitle={"Add Product"}></SingleLink>
-      <SingleLink path={`myCart/${user?.email}`} linkTitle={"My Cart"}></SingleLink>
+      <SingleLink
+        path={`myCart/${user?.email}`}
+        linkTitle={"My Cart"}
+      ></SingleLink>
       <SingleLink path={"addBrand"} linkTitle={"Add Brand"}></SingleLink>
     </>
   );
@@ -63,6 +77,12 @@ const Navbar = () => {
       </div> */}
 
       <div className="navbar-end">
+        <label className="swap swap-rotate">
+          <input onClick={toggleTheme} type="checkbox" />
+          <div className="swap-off text-xs">DARKMODE</div>
+          <div className="swap-on text-xs">LIGHTMODE</div>
+        </label>
+        
         {user ? (
           <div className="flex flex-col md:flex-row justify-center items-center gap-2">
             <div className="avatar online">

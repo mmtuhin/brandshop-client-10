@@ -41,6 +41,7 @@ const AddProduct = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
+          e.target.reset();
           toast.success("Product has been added.");
         } else {
           toast.error("Something went wrong.");

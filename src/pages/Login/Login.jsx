@@ -74,7 +74,7 @@ const Login = () => {
             <input
               type="submit"
               value="LOGIN"
-              className="text-white font-semibold py-2 px-4 w-full rounded-md bg-[#E50914] mb-4"
+              className="text-white font-semibold py-2 px-4 w-full rounded-md bg-[#E50914] mb-4 hover:bg-orange-500 hover:text-black"
             />
           </form>
           <a className="text-left text-sm text-white">
@@ -84,10 +84,10 @@ const Login = () => {
             </Link>
           </a>
           <div className="py-2 text-sm">
-            <p className="font-semibold my-2">Social Login:</p>
+            <p className="font-semibold my-2 text-white">Social Login:</p>
             <div className="flex items-center bg">
               <button
-                className="hover:bg-sky-700 btn btn-sm bg-gray-800 text-white"
+                className="hover:bg-gray-800  btn btn-sm  bg-sky-700 text-white"
                 onClick={() => handleSocialSignIn(googleSignIn)}
               >
                 Google

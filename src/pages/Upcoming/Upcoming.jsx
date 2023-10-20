@@ -6,8 +6,8 @@ const Upcoming = () => {
     const upcomings = useLoaderData()
     return (
         <div>
-            <h1>Upcoming Movies</h1>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <h1 className="text-center text-xl font-semibold">Upcoming Movies on this site.</h1>
+            <div className="flex flex-col md:mx-8 md:grid md:grid-cols-2 lg:flex gap-4 py-8 justify-center items-center mx-auto text-center">
                 {
                     upcomings.map((product, index) => <SingleProductCard key={index} product={product}></SingleProductCard>)
                 }
