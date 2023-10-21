@@ -7,7 +7,7 @@ const Upcoming = () => {
     return (
         <div>
             <h1 className="text-center text-xl font-semibold">Upcoming Movies on this site.</h1>
-            <div className="flex flex-col md:mx-8 md:grid md:grid-cols-2 lg:flex gap-4 py-8 justify-center items-center mx-auto text-center">
+            <div className="flex flex-col md:mx-8 md:grid md:grid-cols-2 lg:flex gap-4 py-8 lg:flex-row justify-center items-center mx-auto text-center">
                 {
                     upcomings.map((product, index) => <SingleProductCard key={index} product={product}></SingleProductCard>)
                 }

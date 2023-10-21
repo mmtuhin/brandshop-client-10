@@ -14,11 +14,12 @@ const BrandProducts = () => {
 
   return (
     <div>
-      <div className="carousel w-full">
+      <div className="carousel w-full h-96">
         <div id="slide1" className="carousel-item relative w-full">
           <img
             src={brandAd1}
-            className="w-full"
+            className="w-full object-cover"
+
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide3" className="btn btn-circle">
@@ -32,7 +33,7 @@ const BrandProducts = () => {
         <div id="slide2" className="carousel-item relative w-full">
           <img
             src={brandAd2}
-            className="w-full"
+            className="w-full object-cover"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide1" className="btn btn-circle">
@@ -46,7 +47,7 @@ const BrandProducts = () => {
         <div id="slide3" className="carousel-item relative w-full">
           <img
             src={brandAd3}
-            className="w-full"
+            className="w-full object-cover"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide2" className="btn btn-circle">

@@ -57,20 +57,20 @@ const ProductDetails = () => {
 
   return (
     <div className="flex gap-8 justify-center">
-      <div className="relative my-8">
-        <img src={productImageUrl} className="w-96 h-[80vh] rounded-lg" />
-        <div className="absolute bg-black w-96 py-6 bottom-0 bg-opacity-60 rounded-lg">
-          <button
+      <div className=" mx-8 my-8">
+        <img src={productImageUrl} className=" rounded-lg" />
+        {/* <div className="absolute bg-black w-96 py-6 bottom-0 bg-opacity-60 rounded-lg">
+          
+        </div> */}
+      </div>
+      <div>
+        <h1 className="text-2xl font-bold  mt-12 mb-4">{productName}</h1>
+        <button
             onClick={handleAddToCart}
-            className="text-white bg-red-600 py-4 px-6 ml-4 font-semibold rounded"
+            className="text-white bg-red-600 py-1 px-6 font-semibold rounded"
           >
             Add to cart: {productPrice} $
           </button>
-        </div>
-      </div>
-      <div>
-        <h1 className="text-2xl font-bold text-black mt-12 mb-4">{productName}</h1>
-        
         <p>Streaming Media: {productBrand}</p>
         <p>Rating: {productRating}</p>
         <p>Category: {productCategory}</p>
