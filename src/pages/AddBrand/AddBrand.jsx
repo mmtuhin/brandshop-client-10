@@ -12,7 +12,7 @@ const AddBrand = () => {
 
         const newBrand = {brandName, brandLogoUrl, brandAd1, brandAd2, brandAd3}
         console.log(newBrand);
-        fetch('http://localhost:4444/brand',{
+        fetch('https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/brand',{
           method:'POST',
           headers:{
             'content-type': 'application/json'

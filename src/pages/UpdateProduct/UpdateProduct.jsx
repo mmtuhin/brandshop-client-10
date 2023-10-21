@@ -18,7 +18,7 @@ const UpdateProduct = () => {
   } = product;
 
   useEffect(() => {
-    fetch("http://localhost:4444/brand") // Replace with the actual API endpoint URL
+    fetch("https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/brand") // Replace with the actual API endpoint URL
       .then((res) => res.json())
       .then((data) => setBrands(data))
       .catch((error) => console.error("Error fetching brands:", error));
@@ -49,7 +49,7 @@ const UpdateProduct = () => {
 
     console.log(updatedProduct);
 
-    fetch(`http://localhost:4444/product/${_id}`, {
+    fetch(`https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/product/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

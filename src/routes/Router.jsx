@@ -12,16 +12,18 @@ import AddBrand from "../pages/AddBrand/AddBrand";
 import BrandProducts from "../pages/BrandProducts/BrandProducts";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:4444/brand')
+            loader: () => fetch('https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/brand')
             
         },
         {
@@ -31,22 +33,22 @@ const router = createBrowserRouter([
         {
           path: '/myCart/:email',
           element: <PrivateRouter><MyCart></MyCart></PrivateRouter>,
-          loader: ({params}) => fetch(`http://localhost:4444/myCart/${params.email}`)
+          loader: ({params}) => fetch(`https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/myCart/${params.email}`)
         },
         {
           path: '/upcoming',
           element: <Upcoming></Upcoming>,
-          loader: () => fetch('http://localhost:4444/upcoming')
+          loader: () => fetch('https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/upcoming')
         },
         {
           path: '/trending',
           element: <Trending></Trending>,
-          loader:() => fetch('http://localhost:4444/trending')
+          loader:() => fetch('https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/trending')
         },
         {
           path: '/addProduct',
           element: <PrivateRouter><AddProduct></AddProduct></PrivateRouter>,
-          loader: () => fetch('http://localhost:4444/brand')
+          loader: () => fetch('https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/brand')
         },
         {
           path: '/registration',
@@ -59,17 +61,17 @@ const router = createBrowserRouter([
         {
           path: '/brandProducts/:brandName',
           element: <BrandProducts></BrandProducts>,
-          loader: ({params}) => fetch(`http://localhost:4444/brandProducts/${params.brandName}`)
+          loader: ({params}) => fetch(`https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/brandProducts/${params.brandName}`)
         },
         {
           path: '/productDetails/:productId',
           element: <PrivateRouter><ProductDetails></ProductDetails></PrivateRouter>,
-          loader: ({params}) => fetch(`http://localhost:4444/productDetails/${params.productId}`)
+          loader: ({params}) => fetch(`https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/productDetails/${params.productId}`)
         },
         {
           path: '/updateProduct/:productId',
           element: <PrivateRouter><UpdateProduct></UpdateProduct></PrivateRouter>,
-          loader: ({params}) => fetch(`http://localhost:4444/updateProduct/${params.productId}`)
+          loader: ({params}) => fetch(`https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/updateProduct/${params.productId}`)
         }
       ]
       

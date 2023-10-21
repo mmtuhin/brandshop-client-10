@@ -21,7 +21,7 @@ const SingleCartProduct = ({cartProduct, cartProducts, setCartProducts}) => {
 
       const handleDeleteCartItem = (_id) => {
                 console.log(_id);
-                fetch(`http://localhost:4444/cart/${_id}`, {
+                fetch(`https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/cart/${_id}`, {
                     method: 'DELETE'
                 })
                 .then(res => res.json())

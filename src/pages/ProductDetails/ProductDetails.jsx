@@ -37,7 +37,7 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     console.log("Adding to cart");
 
-    fetch("http://localhost:4444/cart", {
+    fetch("https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",

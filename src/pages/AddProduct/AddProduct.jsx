@@ -30,7 +30,7 @@ const AddProduct = () => {
 
     console.log(newProduct);
 
-    fetch("http://localhost:4444/product", {
+    fetch("https://popcorn-plays-server-881lrltng-tuhin-hossains-projects.vercel.app/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",
