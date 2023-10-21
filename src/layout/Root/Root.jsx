@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 const Root = () => {
     return (
-        <div>
+        <div className="font-inter">
             <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
