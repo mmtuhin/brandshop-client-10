@@ -76,7 +76,7 @@ const Navbar = () => {
         <NavLink to='/login'><span className="btn btn-sm bg-[#E50914] hover:bg-[#366785] text-white ">Sign In</span></NavLink>
       </div> */}
 
-      <div className="navbar-end">
+      <div className="navbar-end flex flex-col md:flex-row">
         <label className="swap swap-rotate">
           <input onClick={toggleTheme} type="checkbox" />
           <div className="swap-off text-xs">DARKMODE</div>
